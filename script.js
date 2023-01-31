@@ -1,26 +1,23 @@
-const fruitList = document.getElementById("fruit-list");
-const toggleThemeButton = document.getElementById("toggle-theme");
+const switchBtn = document.querySelector("#switchBtn");
+const listItems = document.querySelectorAll(".list li");
 
-let theme = "light";
+let theme = 1;
 
-function switchTheme() {
-  const items = fruitList.getElementsByTagName("li");
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].classList.contains("even")) {
-      if (theme === "light") {
-        items[i].style.backgroundColor = "lightblue";
+switchBtn.addEventListener("click", function() {
+  for (let i = 0; i < listItems.length; i++) {
+    if (i % 2 === 0) {
+      if (theme === 1) {
+        listItems[i].className = "theme1";
       } else {
-        items[i].style.backgroundColor = "yellow";
+        listItems[i].className = "theme2";
       }
     } else {
-      if (theme === "light") {
-        items[i].style.backgroundColor = "yellow";
+      if (theme === 1) {
+        listItems[i].className = "theme2";
       } else {
-        items[i].style.backgroundColor = "lightblue";
+        listItems[i].className = "theme1";
       }
     }
   }
-  theme = theme === "light" ? "dark" : "light";
-}
-
-toggleThemeButton.addEventListener("click", switchTheme);
+  theme = theme === 1 ? 2 : 1;
+});
